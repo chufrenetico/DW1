@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+
+  input{
+    margin:10px auto;
+  }
+  
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+  }
+  input[type=number] { 
+  -moz-appearance: textfield;
+  appearance: textfield;
+  }
+
+  h1{
+  border-top: solid;
+  border-bottom: solid;
+  color: #CD5C5C;
+  text-align: center;
+   color:  black;
+  }
+
+h2 , h4{
+  color: white;
+  background-color:  #CD5C5C;
+  border-style: solid 3px ;
+  color:  black;
+}
+h3
+{
+  text-align: center;
+  margin: 10px 0px 20px 0px;
+  text-decoration: underline;
+}
+
+body{
+  padding: 0vw 10vw  0vw 10vw;
+  background-color:  #ddd
+
+}
+
+
+td
+{
+  text-align: center;
+}
+
+
+#tabela{
+  display: none;
+}

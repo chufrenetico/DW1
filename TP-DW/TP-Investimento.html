@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Simulador de Investimentos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="minhacss/estilos.css">
+  
+</head>
+<header class="header">
+    <h1 class="logo">Simulador de Investimentos</h1>
+</header>
+
+<body>
+    <script>
+        function calculo(){
+          var inv=document.getElementById("valor").value;
+          var tempo=document.getElementById("tempo").value;
+          if (tempo <= 6){
+            var ir=22.5;
+          } else if (tempo <= 12){
+            var ir=20;
+          } else if (tempo <= 24){
+            var ir=17.5;
+          } else {
+            var ir= 15;
+          }
+          var taxa=document.getElementById("taxa").value;
+          var pct=document.getElementById("pct").value;
+          var poup=inv*Math.pow(1.0035, tempo);
+          var arredondadop=parseFloat(poup.toFixed(2));
+          var cdb=inv*Math.pow((1+(taxa * pct /10000)), tempo);
+          var arredondadoc=parseFloat(cdb.toFixed(2));
+          var lucro=arredondadoc - inv;
+          var desconto=parseFloat(inv) + lucro - (ir * lucro /100);
+          document.getElementById("tabela").style.display="";
+        }
+      </script>
+  <main>
+    <h2>Simule seu investimento conosco!</h2><br>
+    <p>Calculamos para você qual a melhor opção de investimento, dentre poupança ou CDB, de acordo com suas necessidades.</p>
+    <h4>Conta poupança: o que é e como funciona?</h4>
+    <p>A conta poupança é a caderneta. Ela é regulada pelo Banco Central e funciona assim: você faz um depósito e, um mês após essa data, o dinheiro vai crescer um pouco, levando em conta uma taxa definida pelo governo. Essa taxa é calculada de duas formas:</p>
+    <ul>
+      <li>Se a taxa Selic estiver acima de 8,5% ao ano, o rendimento da poupança será 0,5% ao mês + TR.</li>
+      <li>Caso a taxa Selic esteja menor ou igual a 8,5% ao ano, o rendimento da poupança será 70% da Selic + TR.</li>
+    </ul>
+    <p>Atualmente, o rendimento da poupança é de 3,5% ao ano.</p>
+    <h4>CDB: o que é e como funciona?</h4>
+    <p>O CDB (Certificado de Depósito Bancário) é um título emitido por bancos com o objetivo de captar dinheiro. Basicamente, o CDB funciona como um empréstimo do seu dinheiro para a instituição bancária. Em troca, você recebe uma taxa de rentabilidade que é definida no momento da compra.</p>
+    <h3>Calcular</h3>
+
+    <form method="POST">
+    <label for="valor">Valor do Investimento(em R$): </label>
+    <input type="number" name="valor" id="valor" placeholder="Digite aqui" class="real"><br>
+    <label for="tempo">Tempo do Investimento (em meses): </label>
+    <input type="number" name="tempo" id="tempo" placeholder="Digite aqui"><br>
+    <label for="valor">Taxa CDI: </label>
+    <input type="number" name="taxa" id="taxa" placeholder="Digite aqui" ><br>
+    <label for="valor">Porcentagem da CDI(%): </label>
+    <input type="number" name="pct" id="pct" placeholder="Digite aqui"><br>
+    <button onclick="calculo()">Calcular</button>
+    </form>
+    <div id="tabela">
+    <div class="row">
+        <div class="text-center font-weight-bold col-sm-6">Poupança</div>
+        <div class="text-center font-weight-bold col-sm-6">CDB</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6" id="pou">Valor Final: R$</div>
+      <div class="col-sm-6" id="cdb">Valor Final Bruto: R$</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6" id="des">Valor Final Líquido: R$</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6" id="ali">Alíquota:</div>
+    </div>
+  </div>
+  </main>
+</body>
+</html>
